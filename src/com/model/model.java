@@ -49,4 +49,12 @@ public class model implements com.controller.controller{
         siswa.setLebarKolom();
                 }
     }
+
+    @Override
+    public void Reset(View siswa) throws SQLException {
+        siswa.txtNama.setText("");
+
+
+        
+    }
 }
