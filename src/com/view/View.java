@@ -6,6 +6,7 @@ package com.view;
 
 import com.model.model;
 import java.awt.Component;
+import java.sql.SQLException;
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
@@ -71,12 +72,27 @@ public class View extends javax.swing.JFrame {
 
         btnBaru.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnBaru.setText("Baru");
+        btnBaru.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBaruActionPerformed(evt);
+            }
+        });
 
         btnSimpan.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
 
         btnUbah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnUbah.setText("Ubah");
+        btnUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUbahActionPerformed(evt);
+            }
+        });
 
         btnHapus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnHapus.setText("Hapus");
@@ -187,8 +203,8 @@ public class View extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-model model = new model();
-public void setColumnwidth (int kolom){
+    model m = new model();
+    public void setColumnwidth (int kolom){
     DefaultTableColumnModel dtcm = (DefaultTableColumnModel) tabel.getColumnModel();
     TableColumn kolomtabel = dtcm.getColumn(kolom);
     int lebar = 0;
@@ -214,6 +230,29 @@ public void setLebarKolom(){
     for (a = 0; a < tabel.getColumnCount();a++){
 }
 }
+    private void btnBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaruActionPerformed
+      
+    }//GEN-LAST:event_btnBaruActionPerformed
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+      try{
+        m.Simpan(this);
+        m.Reset(this);}
+        catch(SQLException ex){
+            System.out.println("Error"+ex);
+        }
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
+        try{
+        m.Ubah(this);
+        m.Reset(this);
+        }
+        catch(SQLException ex){
+            System.out.println("Error"+ex);
+        }
+    }//GEN-LAST:event_btnUbahActionPerformed
+
     /**
      * @param args the command line arguments
      */
