@@ -85,4 +85,12 @@ public class model implements com.controller.controller{
         Baru(siswa);
         }
     }
+
+    @Override
+    public void Baru(View siswa) throws SQLException {
+        siswa.txtNIS.setText("");
+    siswa.txtNama.setText("");
+    siswa.rbLaki.setSelected(true);
+    siswa.cbJurusan.setSelectedIndex(0);
+    }
 }
