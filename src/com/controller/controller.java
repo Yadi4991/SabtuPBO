@@ -13,4 +13,5 @@ import java.sql.SQLException;
 public interface controller {
     public void Simpan(View siswa) throws SQLException;
     public void Reset(View siswa) throws SQLException;
+    
 }
