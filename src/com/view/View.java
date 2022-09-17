@@ -231,7 +231,13 @@ public void setLebarKolom(){
 }
 }
     private void btnBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaruActionPerformed
-      
+      try{
+      m.Baru(this);
+      m.Reset(this);
+      }  
+      catch(SQLException ex){
+          System.out.println("error"+ex);
+      }
     }//GEN-LAST:event_btnBaruActionPerformed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
