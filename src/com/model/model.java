@@ -52,9 +52,10 @@ public class model implements com.controller.controller{
 
     @Override
     public void Reset(View siswa) throws SQLException {
-        siswa.txtNama.setText("");
-
-        
+                siswa.txtNIS.setText("");
+    siswa.txtNama.setText("");
+    siswa.rbLaki.setSelected(true);
+    siswa.cbJurusan.setSelectedIndex(0);
     }
 
     @Override
@@ -114,5 +115,26 @@ public class model implements com.controller.controller{
     }catch(Exception e){
         System.out.println(e);
     }
+    }
+
+    @Override
+    public void Hapus(View siswa) throws SQLException {
+           try {
+            Connection con = koneksi.getcon();
+            String sql = "DELETE FROM siswa WHERE NIS =?";
+            PreparedStatement prepare = con.prepareStatement(sql);
+            prepare.setString(1, siswa.txtNIS.getText());
+            prepare.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
+            prepare.close();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        finally{
+        Tampil(siswa);
+        siswa.setLebarKolom();
+            Baru(siswa);
+        }
     }
 }
