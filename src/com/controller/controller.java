@@ -17,4 +17,5 @@ public interface controller {
     public void Baru(View siswa) throws SQLException;
     public void Hapus(View siswa) throws SQLException;
     public void Tampil(View siswa) throws SQLException;
+    public void KlikTabel(View siswa) throws SQLException;
 }
