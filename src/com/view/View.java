@@ -278,7 +278,14 @@ public void setLebarKolom(){
     }//GEN-LAST:event_btnUbahActionPerformed
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
-       
+        try{
+        model.Hapus(this);
+        model.Reset(this);
+        }
+        catch(SQLException ex){
+            System.out.println("Error"+ex);
+        }
+
     }//GEN-LAST:event_btnHapusActionPerformed
 
     /**
