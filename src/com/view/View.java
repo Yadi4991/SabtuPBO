@@ -134,6 +134,11 @@ public DefaultTableModel tblmodel,tblmodel1;
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabel);
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
@@ -296,6 +301,15 @@ public void setLebarKolom(){
     private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
         dispose();
     }//GEN-LAST:event_btnKeluarActionPerformed
+
+    private void tabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMouseClicked
+       try {
+        model.KlikTabel(this);
+        }
+        catch (SQLException ex){
+          System.out.println("Error"+ex);
+        }
+    }//GEN-LAST:event_tabelMouseClicked
 
     /**
      * @param args the command line arguments
