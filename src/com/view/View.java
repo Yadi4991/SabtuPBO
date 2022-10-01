@@ -117,6 +117,11 @@ public DefaultTableModel tblmodel,tblmodel1;
 
         btnKeluar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnKeluar.setText("Keluar");
+        btnKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKeluarActionPerformed(evt);
+            }
+        });
 
         tabel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -287,6 +292,10 @@ public void setLebarKolom(){
         }
 
     }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnKeluarActionPerformed
 
     /**
      * @param args the command line arguments
