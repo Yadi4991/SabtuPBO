@@ -15,4 +15,5 @@ public interface controller {
     public void Reset(View siswa) throws SQLException;
     public void Ubah(View siswa) throws SQLException;
     public void Baru(View siswa) throws SQLException;
+    public void Tampil(View siswa) throws SQLException;
 }
