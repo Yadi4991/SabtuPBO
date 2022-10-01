@@ -4,10 +4,14 @@
  */
 package com.view;
 
-import com.model.model;
+import com.model.models;
 import java.awt.Component;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
@@ -16,12 +20,21 @@ import javax.swing.table.TableColumn;
  * @author MSI
  */
 public class View extends javax.swing.JFrame {
+public DefaultTableModel tblmodel,tblmodel1;
+    String header[] = {"NIS", "Nama", "Jenis Kelamin", "Jurusan"};
 
     /**
-     * Creates new form View
+     * Creates new form view
      */
-    public View() {
+
+    
+    public View() throws SQLException {
         initComponents();
+        tblmodel = new DefaultTableModel(null, header);
+        tabel.setModel(tblmodel);
+        tabel.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        model.Tampil(this);
+        setLebarKolom();
     }
 
     /**
@@ -96,6 +109,11 @@ public class View extends javax.swing.JFrame {
 
         btnHapus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnHapus.setText("Hapus");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
 
         btnKeluar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnKeluar.setText("Keluar");
@@ -203,7 +221,7 @@ public class View extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    model m = new model();
+    models model = new models();
     public void setColumnwidth (int kolom){
     DefaultTableColumnModel dtcm = (DefaultTableColumnModel) tabel.getColumnModel();
     TableColumn kolomtabel = dtcm.getColumn(kolom);
@@ -232,8 +250,8 @@ public void setLebarKolom(){
 }
     private void btnBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaruActionPerformed
       try{
-      m.Baru(this);
-      m.Reset(this);
+      model.Baru(this);
+      model.Reset(this);
       }  
       catch(SQLException ex){
           System.out.println("error"+ex);
@@ -242,8 +260,8 @@ public void setLebarKolom(){
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
       try{
-        m.Simpan(this);
-        m.Reset(this);}
+        model.Simpan(this);
+        model.Reset(this);}
         catch(SQLException ex){
             System.out.println("Error"+ex);
         }
@@ -251,13 +269,17 @@ public void setLebarKolom(){
 
     private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
         try{
-        m.Ubah(this);
-        m.Reset(this);
+        model.Ubah(this);
+        model.Reset(this);
         }
         catch(SQLException ex){
             System.out.println("Error"+ex);
         }
     }//GEN-LAST:event_btnUbahActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+       
+    }//GEN-LAST:event_btnHapusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -289,7 +311,12 @@ public void setLebarKolom(){
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                try{
                 new View().setVisible(true);
+                }
+                catch (SQLException ex){
+                  Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
